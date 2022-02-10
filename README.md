@@ -74,3 +74,6 @@ in bft/pbft-network folder
 
 - close network
 ./byfn.sh down
+
+# about the .zip files
+many subfolders are zipped to zip files due to that those folders have too many files in them. Please unzip those .zip files and put the corresponding folders as subfolders of the root folder.
