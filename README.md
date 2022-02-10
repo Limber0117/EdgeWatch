@@ -1,7 +1,7 @@
 # Download required binaries
 curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.4 1.4.4 0.4.22
 
-## Environment and System Setup 
+# Environment and System Setup 
 
 ## Create BFT orderer and gen tool
 - make orderer-docker
