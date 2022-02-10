@@ -1,79 +1,82 @@
-# download required binaries
+### Download required binaries
 curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.4 1.4.4 0.4.22
 
-# create bft orderer and gen tool
-make orderer-docker
+### Environment and System Setup 
 
-make configtxgen
+## Create BFT orderer and gen tool
+- make orderer-docker
 
-copy generated 'orderer' and 'configtxgen' to bft/bin folder
+- make configtxgen
 
-# other envirnment setting
-- GO installation
+- copy generated 'orderer' and 'configtxgen' to bft/bin folder
 
-download go1.15
+## Other envirnment setting
+# GO installation
 
-mkdir ${HOME}/gopath
+- download go1.15
 
-mv go ${HOME}/gopath
+- mkdir ${HOME}/gopath
 
-chmod -R 777 go
+- mv go ${HOME}/gopath
 
-mkdir -p ${HOME}/gopath/src/github.com/hyperledger/
+- chmod -R 777 go
 
-gedit ~/.bashrc
+- mkdir -p ${HOME}/gopath/src/github.com/hyperledger/
 
-add the following at the end:
+- gedit ~/.bashrc
 
-export PATH=$PATH:$HOME/go/bin
+- add the following at the end:
 
-export GOPATH=$HOME/gopath
+```
+ export PATH=$PATH:$HOME/go/bin
 
-export GOROOT=$HOME/go
+ export GOPATH=$HOME/gopath
 
-export GOBIN=$GOROOT/bin
+ export GOROOT=$HOME/go
 
-export PATH=$HOME/gopath/src/github.com/hyperledger/fabric/bft/bin:$PATH
+ export GOBIN=$GOROOT/bin
 
-Update:
+ export PATH=$HOME/gopath/src/github.com/hyperledger/fabric/bft/bin:$PATH
+```
 
-source ~/.bashrc
+- Update: source ~/.bashrc
 
-View:
+- View: go env
 
-go env
+# GO package installation:
 
-- GO package installation:
+- mkdir -p $GOPATH/src/golang/x
 
-mkdir -p $GOPATH/src/golang/x
+- cd $GOPATH/src/golang/x
 
-cd $GOPATH/src/golang/x
+- chmod -R 777 golang
 
-chmod -R 777 golang
+# Download the required package:
 
-- Download the required package:
+- go env -w GO111MODULE=on
 
-go env -w GO111MODULE=on
+- go mod init
 
-go mod init
+- git clone https://github.com/golang/tools.git
 
-git clone https://github.com/golang/tools.git
+- go get golang/x/tools/go/packages
 
-go get golang/x/tools/go/packages
+- go mod vendor
 
-go mod vendor
+# Setup nodejs v8
+# Setup docker
 
-- nodejs v8
-- docker
-
-# build bft network
-- start network with couchdb
-in bft/pbft-network folder
-
+### Build system network
+- start network with couchdb in bft/pbft-network folder
+```
 ./byfn.sh up -a -s couchdb
+```
 
 - close network
+```
 ./byfn.sh down
+```
 
-# about the .zip files
-many subfolders are zipped to zip files due to that those folders have too many files in them. Please unzip those .zip files and put the corresponding folders as subfolders of the root folder.
+# About the .zip files
+
+Many subfolders are zipped to zip files due to that those folders have too many files in them. Please unzip those .zip files and put the corresponding folders as subfolders of the root folder.
