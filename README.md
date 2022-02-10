@@ -1,7 +1,7 @@
-### Download required binaries
+# Download required binaries
 curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.4 1.4.4 0.4.22
 
-### Environment and System Setup 
+## Environment and System Setup 
 
 ## Create BFT orderer and gen tool
 - make orderer-docker
@@ -11,7 +11,7 @@ curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.4 1.4.4 0.4.22
 - copy generated 'orderer' and 'configtxgen' to bft/bin folder
 
 ## Other envirnment setting
-# GO installation
+### GO installation
 
 - download go1.15
 
@@ -43,7 +43,7 @@ curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.4 1.4.4 0.4.22
 
 - View: go env
 
-# GO package installation:
+### GO package installation:
 
 - mkdir -p $GOPATH/src/golang/x
 
@@ -51,7 +51,7 @@ curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.4 1.4.4 0.4.22
 
 - chmod -R 777 golang
 
-# Download the required package:
+### Download the required package:
 
 - go env -w GO111MODULE=on
 
@@ -63,10 +63,10 @@ curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.4 1.4.4 0.4.22
 
 - go mod vendor
 
-# Setup nodejs v8
-# Setup docker
+### Setup nodejs v8
+### Setup docker
 
-### Build system network
+# Build system network
 - start network with couchdb in bft/pbft-network folder
 ```
 ./byfn.sh up -a -s couchdb
